@@ -1,0 +1,8 @@
+<h1>Enjoy these events!</h1>
+
+<% @events.each do |event| %>
+  <h3><%= event.title %></h3><br>
+  <%= event.body %>
+  <h5>This event will be held on <%= event.date %></h5>
+  <h6>Organized by <%= event.creator.email if user_signed_in? %></h6>
+<% end %>

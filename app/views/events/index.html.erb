@@ -1,8 +1,10 @@
 <h1>Enjoy these events!</h1>
 
 <% @events.each do |event| %>
-  <h3><%= event.title %></h3><br>
+  <h2><%= link_to event.title, event_path(event.id) %></h2><br>
   <%= event.body %>
   <h5>This event will be held on <%= event.date %></h5>
-  <h6>Organized by <%= event.creator.email if user_signed_in? %></h6>
+  <% if user_signed_in? %>
+    <h6>Organized by <%= link_to event.creator.email, user_path(event.creator.id) %></h6>
+  <% end %>
 <% end %>

@@ -2,11 +2,11 @@
 
 <% @events.each do |event| %>
   <hr>
-  <h2><%= link_to event.title, event_path(event.id) %></h2><br>
+  <h2><%= link_to event.title, event_path(event.id) %></h2>
   <%= event.body %>
-  <h5>This event will be held on <%= event.date %> in <%= event.location %></h5>
+  <h4>This event will be held on <%= event.date %> in <%= event.location %></h4>
   <% if user_signed_in? %>
-    <h6>Organized by <%= link_to event.creator.email, user_path(event.creator.id) %></h6>
+    <h5>Organized by <%= link_to event.creator.email, user_path(event.creator.id) %></h5>
   <% end %>
   <hr>
 <% end %>

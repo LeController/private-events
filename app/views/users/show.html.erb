@@ -1,6 +1,7 @@
 <h1>Profile page for <%= @user.email %><h1>
+<h3>Events organized by <%= @user.email %></h3>
 <ul>
   <% @events.each do |event| %>
-    <li><%= link_to event.title, event_path(event.id) %></li>
+    <li><h4><%= link_to event.title, event_path(event.id) %></h4></li>
   <% end %>
 </ul>

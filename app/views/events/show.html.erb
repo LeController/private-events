@@ -2,7 +2,7 @@
 
 <h2><%= @event.title %></h2><br>
 <%= @event.body %>
-<h5>This event will be held on <%= @event.date %></h5>
+<h5>This event will be held on <%= @event.date %> in <%= @event.location %></h5>
 <% if user_signed_in? %>
-    <h6>Organized by <%= link_to event.creator.email, user_path(event.creator.id) %></h6>
+    <h6>Organized by <%= link_to @event.creator.email, user_path(@event.creator.id) %></h6>
 <% end %>

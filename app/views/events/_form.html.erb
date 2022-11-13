@@ -1,4 +1,4 @@
-<h2>For user: <%= current_user.email %></h2>
+<h2>For user: <%= current_user.email if user_signed_in?%></h2>
 
 <%= form_with model: @event do |form| %>
   <div>

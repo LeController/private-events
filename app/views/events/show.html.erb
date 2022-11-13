@@ -4,7 +4,7 @@
 <% if user_signed_in? %>
   <h5>Organized by <%= link_to @event.creator.email, user_path(@event.creator.id) %></h5>
 <% end %>
-<%= button_to "Attend Event", @attendance, method: :post %><br>
+<%= button_to "Attend Event", attendances_path({event_id: @event.id}) %><br>
 <% if current_user == @event.creator %>
   <%= button_to "Edit Event", edit_event_path, method: :get %><br>
   <%= button_to "DESTROY EVENT", @event, method: :delete %>

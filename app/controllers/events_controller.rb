@@ -4,7 +4,11 @@ class EventsController < ApplicationController
   end
 
   def show
+
+    puts params
+
     @event = Event.find(params[:id])
+    @attendance = Attendance.new
   end
 
   # GET /posts/new

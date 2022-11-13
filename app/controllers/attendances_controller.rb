@@ -4,7 +4,11 @@ class AttendancesController < ApplicationController
   end
 
   def create
+    puts "HELLOOOOOOOOOOOOOOWWWWWWWWWWWWWWWWWWWWWWwwwwwwwwwwwwwwwww"
+    puts "PARAMS", params
     event = Event.find(params[:event_id])
+
+
     attendance = Attendance.new(attended_event_id: event.id, attendee_id: current_user.id)
 
     if attendance.save

@@ -1,7 +1,16 @@
+<hr>
 <h1>Profile page for <%= @user.email %><h1>
 <h3>Events organized by <%= @user.email %></h3>
 <ul>
   <% @events.each do |event| %>
     <li><h4><%= link_to event.title, event_path(event.id) %></h4></li>
+  <% end %>
+</ul>
+
+<hr>
+<h3>Events attended by <%= @user.email %></h3>
+<ul>
+  <% @user.attended_events.each do |attended_event| %>
+    <li><h4><%= link_to attended_event.title, event_path(attended_event) %></h4></li>
   <% end %>
 </ul>

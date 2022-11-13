@@ -1,6 +1,6 @@
 <hr>
 <h1>Profile page for <%= @user.email %><h1>
-<h3>Events organized by <%= @user.email %></h3>
+<h2>Events organized by <%= @user.email %></h2>
 <ul>
   <% @events.each do |event| %>
     <li><h4><%= link_to event.title, event_path(event.id) %></h4></li>
@@ -8,9 +8,25 @@
 </ul>
 
 <hr>
-<h3>Events attended by <%= @user.email %></h3>
+<h2>Events attended by <%= @user.email %></h2>
 <ul>
-  <% @user.attended_events.each do |attended_event| %>
-    <li><h4><%= link_to attended_event.title, event_path(attended_event) %></h4></li>
-  <% end %>
+  <h3>Future Events</h3>
+    <% @user.attended_events.each do |attended_event| %>
+      <% if attended_event.date > Date.today %>
+        <li>
+          <h4><%= link_to attended_event.title, event_path(attended_event) %></h4>
+          <%= attended_event.date %>
+        </li>
+      <% end %>
+    <% end %>
+  <hr>
+  <h3>Past Events</h3>
+    <% @user.attended_events.each do |attended_event| %>
+      <% if attended_event.date < Date.today %>
+        <li>
+          <h4><%= link_to attended_event.title, event_path(attended_event) %></h4>
+          <%= attended_event.date %>
+        </li>
+      <% end %>
+    <% end %>
 </ul>

@@ -11,22 +11,18 @@
 <h2>Events attended by <%= @user.email %></h2>
 <ul>
   <h3>Future Events</h3>
-    <% @user.attended_events.each do |attended_event| %>
-      <% if attended_event.date > Date.today %>
-        <li>
-          <h4><%= link_to attended_event.title, event_path(attended_event) %></h4>
-          <%= attended_event.date %>
-        </li>
-      <% end %>
+    <% @user.attended_events.future.each do |attended_event| %>
+      <li>
+        <h4><%= link_to attended_event.title, event_path(attended_event) %></h4>
+        <%= attended_event.date %>
+      </li>
     <% end %>
   <hr>
   <h3>Past Events</h3>
-    <% @user.attended_events.each do |attended_event| %>
-      <% if attended_event.date < Date.today %>
-        <li>
-          <h4><%= link_to attended_event.title, event_path(attended_event) %></h4>
-          <%= attended_event.date %>
-        </li>
-      <% end %>
+    <% @user.attended_events.past.each do |attended_event| %>
+      <li>
+        <h4><%= link_to attended_event.title, event_path(attended_event) %></h4>
+        <%= attended_event.date %>
+      </li>
     <% end %>
 </ul>

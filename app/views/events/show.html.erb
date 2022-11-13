@@ -1,16 +1,27 @@
+<hr>
 <h1><%= @event.title %></h1>
 <%= @event.body %>
 <h4>This event will be held on <%= @event.date %> in <%= @event.location %></h4>
 <% if user_signed_in? %>
   <h5>Organized by <%= link_to @event.creator.email, user_path(@event.creator.id) %></h5>
 <% end %>
-<%= button_to "Attend Event", attendances_path({event_id: @event.id}) %><br>
+<% if user_signed_in? %>
+  <%= button_to "Attend Event", attendances_path({event_id: @event.id}) %><br>
+<% end %>  
+
+<hr>
 <h2>Confirmed Attendees</h2>
 <ul>
 <% @attendees.each do |attendee| %>
-  <li><%= link_to User.find(attendee.attendee_id).email, user_path(User.find(attendee.attendee_id))  %> <%= button_to "Remove", attendance_path, method: :delete %></li>
+  <li>
+    <%= link_to User.find(attendee.attendee_id).email, user_path(User.find(attendee.attendee_id))  %>
+  </li>
+  <% if user_signed_in? && attendee.attendee_id == current_user.id %>
+    <%= button_to "Remove", attendance_path, method: :delete %>
+  <% end %>
 <% end %>
 </ul>
+<hr>
 
 <% if current_user == @event.creator %>
   <%= button_to "Edit Event", edit_event_path, method: :get %><br>

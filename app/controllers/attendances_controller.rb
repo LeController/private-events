@@ -4,8 +4,7 @@ class AttendancesController < ApplicationController
   end
 
   def create
-    puts "HELLOOOOOOOOOOOOOOWWWWWWWWWWWWWWWWWWWWWWwwwwwwwwwwwwwwwww"
-    puts "PARAMS", params
+
     @event = Event.find(params[:event_id])
 
 

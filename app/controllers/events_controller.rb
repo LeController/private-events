@@ -7,7 +7,7 @@ class EventsController < ApplicationController
 
     @event = Event.find(params[:id])
     @attendance = Attendance.new
-    @attendees = Attendance.all
+    @attendees = Attendance.where(attended_event: params[:id])
   end
 
   # GET /posts/new

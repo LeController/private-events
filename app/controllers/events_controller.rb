@@ -5,10 +5,9 @@ class EventsController < ApplicationController
 
   def show
 
-    puts params
-
     @event = Event.find(params[:id])
     @attendance = Attendance.new
+    @attendees = Attendance.all
   end
 
   # GET /posts/new
